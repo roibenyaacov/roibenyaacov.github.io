@@ -9,3 +9,5 @@ region.mjs
 hover.mjs
 probe.mjs
 shot.mjs
+
+perf.mjs

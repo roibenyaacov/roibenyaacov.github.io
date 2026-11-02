@@ -1,32 +1,10 @@
 /* Roi Ben Yaacov, portfolio
-   Three jobs: the header takes the ink of the chapter under it, each section's
-   parts arrive in order, and the settlement line computes for real. */
+   Two jobs: the header takes the ink of the chapter under it, and the
+   settlement sheet computes for real. Nothing on this page animates in on
+   scroll: everything is already there when you arrive. */
 
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- 1. entrances ---------- */
-  const groups = new Map();
-  document.querySelectorAll('.reveal').forEach((el) => {
-    const section = el.closest('section, footer') || document.body;
-    if (!groups.has(section)) groups.set(section, []);
-    const list = groups.get(section);
-    el.style.setProperty('--d', `${Math.min(list.length, 6) * 80}ms`);
-    list.push(el);
-  });
-
-  if (reduced || !('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    }, { rootMargin: '0px 0px 0px 0px', threshold: 0 });
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-  }
 
   /* a looping clip is still motion: hold it on the poster frame when motion is off */
   if (reduced) {
@@ -38,7 +16,7 @@
     });
   }
 
-  /* ---------- 2. the header takes the chapter's ink ---------- */
+  /* ---------- 1. the header takes the chapter's ink ---------- */
   const topbar = document.getElementById('topbar');
   const fields = {
     hero: ['#ffffff', '#11163a'],
@@ -67,7 +45,7 @@
   window.addEventListener('resize', onScroll);
   setInk();
 
-  /* ---------- 3. the live thing: settle a night ---------- */
+  /* ---------- 2. the live thing: settle a night ---------- */
   const sheet = document.getElementById('settle-players');
   const out = document.getElementById('settle-out');
   if (!sheet || !out) return;
