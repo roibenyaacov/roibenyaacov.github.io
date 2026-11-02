@@ -162,34 +162,6 @@ h1, h2, h3 {
 }
 .hero-foot .btn { grid-column: 2; justify-self: start; margin-top: 26px; }
 
-/* ---------- work: the names as one line ---------- */
-.work {
-  padding: var(--gap) var(--gutter);
-  background: var(--bg);
-}
-.work-line {
-  font-size: var(--head);
-  line-height: 1.1;
-  letter-spacing: -0.045em;
-  font-weight: 500;
-  color: var(--muted);
-}
-.work-head, .names, .names li, .work-tail {
-  display: inline;
-  font: inherit;
-  letter-spacing: inherit;
-}
-.work-head { color: var(--ink); }
-.names li:not(:last-child)::after { content: ','; }
-.names li:last-child::after { content: '.'; }
-.names li { white-space: nowrap; }
-.names a {
-  color: var(--ink);
-  text-decoration: none;
-  transition: color 180ms var(--ease);
-}
-.names a:hover { color: var(--accent); }
-
 /* ---------- a chapter: its own field, one picture, type in the corners ---------- */
 .chapter { position: relative; }
 .chapter-stage {
