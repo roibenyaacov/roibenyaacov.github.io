@@ -1,0 +1,11 @@
+# working files, not part of the site
+.claude/
+.taste-skill/
+.comps/
+node_modules/
+
+# local tooling
+region.mjs
+hover.mjs
+probe.mjs
+shot.mjs
