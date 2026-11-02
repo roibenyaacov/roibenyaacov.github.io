@@ -18,13 +18,16 @@
 
   /* ---------- 1. the header takes the chapter's ink ---------- */
   const topbar = document.getElementById('topbar');
+  /* read from the tokens, so colour lives in one place: the stylesheet */
+  const css = getComputedStyle(document.documentElement);
+  const tok = (name) => css.getPropertyValue(name).trim();
   const fields = {
-    hero: ['#ffffff', '#11163a'],
-    bone: ['#15172b', '#eeedea'],
-    pk: ['#ffffff', '#1a237e'],
-    sh: ['#101a24', '#c6d1dc'],
-    rc: ['#f4f0e4', '#12100a'],
-    gold: ['#1c1708', '#c9a227'],
+    hero: ['--hero-ink', '--hero-field'],
+    bone: ['--ink', '--bg'],
+    pk: ['--pk-ink', '--pk-field'],
+    sh: ['--sh-ink', '--sh-field'],
+    rc: ['--rc-ink', '--rc-field'],
+    gold: ['--gold-ink', '--gold'],
   };
   const chapters = [...document.querySelectorAll('[data-chapter]')];
   const setInk = () => {
@@ -32,8 +35,8 @@
     let current = chapters[0];
     for (const c of chapters) if (c.offsetTop <= y) current = c;
     const [ink, bg] = fields[current.dataset.chapter] || fields.hero;
-    topbar.style.setProperty('--topbar-ink', ink);
-    topbar.style.setProperty('--topbar-bg', bg);
+    topbar.style.setProperty('--topbar-ink', tok(ink));
+    topbar.style.setProperty('--topbar-bg', tok(bg));
   };
   let ticking = false;
   const onScroll = () => {

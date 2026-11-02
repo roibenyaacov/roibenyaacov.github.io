@@ -16,8 +16,10 @@
 
   /* chapter fields */
   --hero-field: #11163a;
+  --hero-ink: #ffffff;
   --hero-pale: #a2aad8;
   --pk-field: #1a237e;
+  --pk-ink: #ffffff;
   --pk-soft: #c3caf1;
   --sh-field: #c6d1dc;
   --sh-ink: #101a24;
@@ -146,7 +148,7 @@ h1, h2, h3 {
 }
 .hero-statement span { display: block; }
 .hero-statement .l1 { color: var(--hero-pale); }
-.hero-statement .l2 { color: #ffffff; }
+.hero-statement .l2 { color: var(--hero-ink); }
 .hero-foot {
   margin-top: auto;
   display: grid;
@@ -239,10 +241,10 @@ h1, h2, h3 {
 .king {
   flex: none;
   align-self: flex-end;
-  height: calc(var(--ph) * 0.6);
+  height: calc(var(--ph) * 0.94);
   width: auto;
-  margin-left: clamp(4px, 1.5vw, 28px);
-  margin-bottom: calc(var(--ph) * 0.04);
+  margin-left: calc(var(--ph) * 0.015);
+  margin-bottom: calc(var(--ph) * 0.02);
 }
 .chapter-stage > .chapter-line {
   grid-row: 3;
@@ -282,9 +284,9 @@ h1, h2, h3 {
 .chapter-band:has(.band-shot:nth-child(2):last-child) .band-shot:nth-child(1) { grid-column: 1 / 6; }
 .chapter-band:has(.band-shot:nth-child(2):last-child) .band-shot:nth-child(2) { grid-column: 7 / 12; margin-top: clamp(50px, 9vw, 130px); }
 
-.chapter-pk { background: var(--pk-field); color: #fff; }
+.chapter-pk { background: var(--pk-field); color: var(--pk-ink); }
 .chapter-pk .chapter-line, .chapter-pk .chapter-link, .chapter-pk figcaption { color: var(--pk-soft); }
-.chapter-pk figcaption b { color: #fff; }
+.chapter-pk figcaption b { color: var(--pk-ink); }
 
 .chapter-sh { background: var(--sh-field); color: var(--sh-ink); }
 .chapter-sh .chapter-line, .chapter-sh .chapter-link, .chapter-sh figcaption { color: var(--sh-soft); }
@@ -642,7 +644,7 @@ h1, h2, h3 {
     position: absolute;
     top: clamp(84px, 13svh, 150px);   /* the stage's own top padding: level with the title */
     right: var(--gutter);
-    height: clamp(92px, 13vw, 150px);
+    height: clamp(128px, 22vw, 210px);
     margin: 0;
   }
   .chapter-stage > .chapter-line { grid-row: auto; }
